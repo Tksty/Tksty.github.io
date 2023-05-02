@@ -24,7 +24,7 @@
       var url = "https://api.github.com/repos/Tksty/Tksty.github.io/contents/${filename}";
       var xhr = new XMLHttpRequest();
       xhr.open("PUT", url);
-      xhr.setRequestHeader("Authorization", "Bearer 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");
+      xhr.setRequestHeader("Authorization", "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");
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {

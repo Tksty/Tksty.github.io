@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iAppStore</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+      <!--
+    - google font link
+  -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+  </head>
+  <body>
+<form id="upload-form">
+  <input type="file" id="file-input">
+  <input type="submit" value="Upload">
+</form>
+ </body>
+
+  
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-functions.js"></script>
+  <script>
+  const form = document.getElementById('upload-form');
+  const fileInput = document.getElementById('file-input');
+  const owner = 'Tksty';
+  const repo = 'Tksty.github.io';
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const content = reader.result.split(',')[1];
+
+      const url = `https://api.github.com/repos/${owner}/${repo}/contents/${file.name}`;
+
+      const options = {
+        method: 'PUT',
+        headers: {
+          Authorization: `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`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `Upload ${file.name}`,
+          content: content,
+        }),
+      };
+
+      fetch(url, options)
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
+    };
+
+    reader.readAsDataURL(file);
+  });
+</script>
+
+</html>

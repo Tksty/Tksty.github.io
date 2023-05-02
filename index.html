@@ -21,7 +21,7 @@
     reader.onload = function(event) {
       var content = event.target.result;
       var filename = file.name;
-      var url = "https://api.github.com/repos/Tksty/Tksty.github.io/contents/${filename}";
+      var url = "https://api.github.com/repos/Tksty/moviehub/contents/test";
       var xhr = new XMLHttpRequest();
       xhr.open("PUT", url);
       xhr.setRequestHeader("Authorization", "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");
@@ -37,7 +37,7 @@
         }
       };
       xhr.send(JSON.stringify({
-        message: "Add " + filename,
+        message: "Add test",
         content: btoa(content),
         branch: "main"
       }));

@@ -30,7 +30,7 @@
       const file = fileInput.files[0];
       const filePath = filePathInput.value;
       
-      const url = `https://api.github.com/repos/{owner}/{repo}/contents/${filePath}`;
+      const url = `https://api.github.com/repos/Tksty/moviehub/contents/${filePath}`;
       
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -40,8 +40,8 @@
           content: reader.result.split(',')[1],
           branch: 'main',
           committer: {
-            name: 'Your Name',
-            email: 'your-email@example.com'
+            name: 'Tksty',
+            email: 'pinoyvpndeveloper@gmail.com'
           }
         };
         
